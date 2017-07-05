@@ -39,6 +39,9 @@ For more information on Bluemix toolchains, see [Working with toolchains](https:
 `--sso`
 : Log in to Bluemix with SSO. Required only if you don't have the Cloud Foundry  [`cf`](https://docs.cloudfoundry.org/cf-cli/) command-line tool installed and authenticated.
 
+`--provision`
+: Provision a Bluemix data service.
+
 {% include_relative includes/CLI-std-options.md %}
 
 ### Arguments
@@ -65,6 +68,8 @@ If you run the generator with the `--docker` option, the tool creates Docker-rel
 
 If you run the generator with the `--toolchain` option, the tool creates Bluemix toolchain files without any prompts.
 
+If you run the generator with the `--provision` option, you will be prompted for a name and and asked to select a plan for the service; none of the artifacts will be generated with this option.
+
 ### Output
 
 Without any options, the tool will create a [manifest.yml](https://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html) file, if it doesn't exist already; if it does exist, it will update the configurations based on your responses to the prompts.
@@ -76,3 +81,5 @@ If you answered "Y" to the prompt about generating toolchain files, or ran the g
 If you answered "Y" to the prompt about enabling autoscaling, the tool will add `bluemix-autoscaling-agent` to `server.js`  add the dependency to the `package.json` file.
 
 If you answered "Y" to the prompt about enabling appmetrics, the tool will add  `appmetrics-dash` to `server.js` and add the dependency to `package.json`.
+
+`datasources.bluemix.js` will be generated in the `server` directory to handle data sources configured on Bluemix.
